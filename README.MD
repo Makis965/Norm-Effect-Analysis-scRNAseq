@@ -45,10 +45,10 @@ The repository is organized as follows:
 
 | Clustering Algorithm | R Package |
 | -------------------- | --------- |
-| Hierarchical Clustering | |
-| K-means | | 
-| Louvain Community Detection | | 
-| 
+| Hierarchical Clustering | stats |
+| K-means | stats | 
+| Louvain Community Detection | Seurat | 
+
 
 ### How to Use
 
@@ -71,4 +71,6 @@ Normalization:
 
 5. Analysis:
 
-* TODO: Evaluate the impact of each normalization method on clustering and dimensionality reduction performance.
+* TODO: Evaluate the impact of each normalization method on clustering and dimensionality reduction performance using ARI, SI, Jaccard Index...
+
+**_NOTE:_** There is scCAN clustering method missing, that will soon updated... 
