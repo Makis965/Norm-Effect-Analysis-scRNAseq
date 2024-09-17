@@ -48,7 +48,7 @@ The repository is organized as follows:
 | Hierarchical Clustering | stats | [R doc](https://www.rdocumentation.org/packages/stats/versions/3.6.2) |
 | K-means | stats |  [R doc](https://www.rdocumentation.org/packages/stats/versions/3.6.2) |
 | Louvain Community Detection | Seurat | [CRAN database](https://cran.r-project.org/web/packages/Seurat/index.html) |
-| scCAN | scCAN | [CRAN](https://cran.r-project.org/web/packages/scCAN/index.html) |
+| scCAN | scCAN | [CRAN database](https://cran.r-project.org/web/packages/scCAN/index.html) |
 
 
 ### How to Use
