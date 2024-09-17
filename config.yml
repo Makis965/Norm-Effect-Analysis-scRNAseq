@@ -1,0 +1,74 @@
+default:
+
+  # Root path for the project source code
+  source_path: "E:/Normalization_effects"
+
+  # Data configuration
+  data:
+    # Paths to raw data for different datasets
+    raw_data: 
+      breast: "src/data/breast.RData"
+      pbmc: "src/data/pbmc.RData"
+      liver: "src/data/liver.RData"
+
+    # Paths to normalized data
+    normalized: 
+      breast: "src/data/normalized/normalized_breast.RData"
+      pbmc: "src/data/normalized/normalized_pbmc.RData"
+      liver: "src/data/normalized/normalized_liver.RData"
+
+    # Paths to dimensionally reduced data (tSNE and UMAP)
+    reduced: 
+      breast: 
+        tSNE: "src/data/reduced/tSNE_breast.RData"
+        UMAP: "src/data/reduced/UMAP_breast.RData"
+      pbmc:
+        tSNE: "src/data/reduced/tSNE_pbmc.RData"
+        UMAP: "src/data/reduced/UMAP_pbmc.RData"
+      liver:
+        tSNE: "src/data/reduced/tSNE_liver.RData"
+        UMAP: "src/data/reduced/UMAP_liver.RData"
+        
+    # Paths to clustered data (k-means, hierarchical clustering, Louvain, scCAN)
+    clustered: 
+      breast:
+        tSNE:
+          kmeans: "src/data/clustered/kmeans_tSNE_breast.RData"
+          hclust: "src/data/clustered/hclust_tSNE_breast.RData"
+          louvain: "src/data/clustered/louvain_tSNE_breast.RData"
+          scCAN: "src/data/clustered/sccan_tSNE_breast.RData"
+        UMAP:
+          kmeans: "src/data/clustered/kmeans_UMAP_breast.RData"
+          hclust: "src/data/clustered/hclust_UMAP_breast.RData"
+          louvain: "src/data/clustered/louvain_UMAP_breast.RData"
+          scCAN: "src/data/clustered/sccan_UMAP_breast.RData"
+          
+      pbmc:
+        tSNE:
+          kmeans: "src/data/clustered/kmeans_tSNE_pbmc.RData"
+          hclust: "src/data/clustered/hclust_tSNE_pbmc.RData"
+          louvain: "src/data/clustered/louvain_tSNE_pbmc.RData"
+          scCAN: "src/data/clustered/sccan_tSNE_pbmc.RData"
+        UMAP:
+          kmeans: "src/data/clustered/kmeans_UMAP_pbmc.RData"
+          hclust: "src/data/clustered/hclust_UMAP_pbmc.RData"
+          louvain: "src/data/clustered/louvain_UMAP_pbmc.RData"
+          scCAN: "src/data/clustered/sccan_UMAP_pbmc.RData"
+          
+      liver:
+        tSNE:
+          kmeans: "src/data/clustered/kmeans_tSNE_liver.RData"
+          hclust: "src/data/clustered/hclust_tSNE_liver.RData"
+          louvain: "src/data/clustered/louvain_tSNE_liver.RData"
+          scCAN: "src/data/clustered/sccan_tSNE_liver.RData"
+        UMAP:
+          kmeans: "src/data/clustered/kmeans_UMAP_liver.RData"
+          hclust: "src/data/clustered/hclust_UMAP_liver.RData"
+          louvain: "src/data/clustered/louvain_UMAP_liver.RData"
+          scCAN: "src/data/clustered/sccan_UMAP_liver.RData"
+
+  # Utility script paths
+  utils:
+    normalization: "src/utils/normalization_utils.R"
+    dim_reduction: "src/utils/dim_reduction_utils.R"
+    clustering: "src/utils/clustering_utils.R"
