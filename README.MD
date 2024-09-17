@@ -71,4 +71,6 @@ Normalization:
 
 5. Analysis:
 
-* TODO: Evaluate the impact of each normalization method on clustering and dimensionality reduction performance.
+* TODO: Evaluate the impact of each normalization method on clustering and dimensionality reduction performance using ARI, SI, Jaccard Index...
+
+**_NOTE:_** There is scCAN clustering method missing, that will soon updated... 
