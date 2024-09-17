@@ -43,8 +43,8 @@ The repository is organized as follows:
 
 ### Leveraged clustering algorithms 
 
-| Clustering Algorithm | R Package |
-| -------------------- | --------- |
+| Clustering Algorithm | R Package | Source |
+| -------------------- | --------- | ------ |
 | Hierarchical Clustering | stats | [R doc](https://www.rdocumentation.org/packages/stats/versions/3.6.2) |
 | K-means | stats |  [R doc](https://www.rdocumentation.org/packages/stats/versions/3.6.2) |
 | Louvain Community Detection | Seurat | [CRAN database](https://cran.r-project.org/web/packages/Seurat/index.html) |
