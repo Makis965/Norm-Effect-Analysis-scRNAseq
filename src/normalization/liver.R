@@ -8,6 +8,7 @@ library(Dino)
 library(scran)
 library(SCnorm)
 library(Seurat)
+library(stats)
 
 source(config$utils$normalization)
 
@@ -54,7 +55,7 @@ cells.seurat <- top_variance(expression_df = cells.seurat, gene_names = genes)
 # group...
 
 # cells.scnrom <- SCnorm(cells, Conditions = as.vector(meta$CellType))
-cells.scnorm <- SCnorm(cells, Conditions = c(1:ncol(cells)))
+cells.scnorm <- SCnorm(cells, Conditions = rep(1, each=ncol(cells)))
 cells.scnorm <- cells.scnorm@assays@data@listData$normcounts
 cells.scnorm <- top_variance(expression_df = cells.scnorm, gene_names = genes)
 

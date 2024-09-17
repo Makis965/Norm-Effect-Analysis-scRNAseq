@@ -8,6 +8,7 @@ library(Dino)
 library(scran)
 library(SCnorm)
 library(Seurat)
+library(stats)
 
 source(config$utils$normalization)
 

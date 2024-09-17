@@ -7,16 +7,26 @@ install_missing <- function(package) {
 # ---- basic ---- 
 
 packages <- c(
+    #base packages
     "config",
     "dplyr",
-    "uwot"
-)
 
-sapply(packages, install_missing)
+    #normalization packages
+    "Seurat",
+    "Dino",
+    "scran",
+    "SCnorm",
 
-# ---- additional ---- 
+    #dim reduction packages
+    "Rtsne",
+    "uwot",
 
-packages <- c(
+    #clustering packages
+    "cluster",
+    "SeuratObject",
+    "igraph",
+
+    #visualization packages
     "ggplot2",
 )
 

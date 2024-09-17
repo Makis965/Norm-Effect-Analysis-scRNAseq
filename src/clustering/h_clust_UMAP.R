@@ -1,7 +1,6 @@
 setwd("E:/Normalization_effects")
 
 library(dplyr)
-library(factoextra)
 library(cluster)
 library(config)
 
