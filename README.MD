@@ -45,10 +45,10 @@ The repository is organized as follows:
 
 | Clustering Algorithm | R Package |
 | -------------------- | --------- |
-| Hierarchical Clustering | stats | [R doc](https://www.rdocumentation.org/packages/stats/versions/3.6.2)
-| K-means | stats |  [R doc](https://www.rdocumentation.org/packages/stats/versions/3.6.2)S
-| Louvain Community Detection | Seurat | [CRAN database](https://cran.r-project.org/web/packages/Seurat/index.html)
-| scCAN | scCAN | [CRAN](https://cran.r-project.org/web/packages/scCAN/index.html)
+| Hierarchical Clustering | stats | [R doc](https://www.rdocumentation.org/packages/stats/versions/3.6.2) |
+| K-means | stats |  [R doc](https://www.rdocumentation.org/packages/stats/versions/3.6.2) |
+| Louvain Community Detection | Seurat | [CRAN database](https://cran.r-project.org/web/packages/Seurat/index.html) |
+| scCAN | scCAN | [CRAN](https://cran.r-project.org/web/packages/scCAN/index.html) |
 
 
 ### How to Use
