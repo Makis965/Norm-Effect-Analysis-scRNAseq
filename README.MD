@@ -29,7 +29,7 @@ The repository is organized as follows:
 | ------------- | --------- | --- |
 | log2 | base      | -   |
 | Freeman-Tukey | base | - |
-| Seurat | Seurat: Tools for Single Cell Genomics | [CRAN database](https://cran.r-project.org/web/packages/Seurat/index.html) |
+| Seurat | Seurat: Tools for Single Cell Genomics | [CRAN databse](https://cran.r-project.org/web/packages/Seurat/index.html) |
 | scran | Methods for Single-Cell RNA-Seq Data Analysis | [Bioconductor database](https://bioconductor.org/packages/devel/bioc/vignettes/scran/inst/doc/scran.html) |
 | Dino | Normalization of Single-Cell mRNA Sequencing Data | [Bioconductor database](https://www.bioconductor.org/packages/release/bioc/html/Dino.html) |
 | SCnorm | Robust normalization of single-cell RNA-seq data | [GitHub repository](https://github.com/rhondabacher/SCnorm) |
@@ -43,12 +43,11 @@ The repository is organized as follows:
 
 ### Leveraged clustering algorithms 
 
-| Clustering Algorithm | R Package | Source |
-| -------------------- | --------- | ------ |
-| Hierarchical Clustering | stats | [R doc](https://www.rdocumentation.org/packages/stats/versions/3.6.2) |
-| K-means | stats |  [R doc](https://www.rdocumentation.org/packages/stats/versions/3.6.2) |
-| Louvain Community Detection | Seurat | [CRAN database](https://cran.r-project.org/web/packages/Seurat/index.html) |
-| scCAN | scCAN | [CRAN database](https://cran.r-project.org/web/packages/scCAN/index.html) |
+| Clustering Algorithm | R Package |
+| -------------------- | --------- |
+| Hierarchical Clustering | stats |
+| K-means | stats | 
+| Louvain Community Detection | Seurat | 
 
 
 ### How to Use
@@ -74,4 +73,4 @@ Normalization:
 
 * TODO: Evaluate the impact of each normalization method on clustering and dimensionality reduction performance using ARI, SI, Jaccard Index...
 
-**_NOTE:_** There is [scCAN](https://www.nature.com/articles/s41598-022-14218-6) clustering method missing, that will soon updated... 
+**_NOTE:_** There is scCAN clustering method missing, that will soon updated... 
