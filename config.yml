@@ -66,9 +66,54 @@ default:
           hclust: "src/data/clustered/hclust_UMAP_liver.RData"
           louvain: "src/data/clustered/louvain_UMAP_liver.RData"
           scCAN: "src/data/clustered/sccan_UMAP_liver.RData"
+  
+    # Paths to statistics for processed data
+    statistics:
+      dim_reduction: "src/statistics/dim_reduction_efficiency/dim_reduction_stats.RData"
+      clustering:
+        pbmc:
+          tSNE:
+            original_labels: "src/statistics/clustering_efficiency/original_labels/tSNE_pbmc.RData"
+          UMAP:
+            original_labels: "src/statistics/clustering_efficiency/original_labels/UMAP_pbmc.RData"
+        breast:
+          tSNE:
+            original_labels: "src/statistics/clustering_efficiency/original_labels/tSNE_breast.RData"
+          UMAP:
+            original_labels: "src/statistics/clustering_efficiency/original_labels/UMAP_breast.RData"
+        liver:
+          tSNE:
+            original_labels: "src/statistics/clustering_efficiency/original_labels/tSNE_liver.RData"
+          UMAP:
+            original_labels: "src/statistics/clustering_efficiency/original_labels/UMAP_liver.RData"
+
 
   # Utility script paths
   utils:
     normalization: "src/utils/normalization_utils.R"
     dim_reduction: "src/utils/dim_reduction_utils.R"
     clustering: "src/utils/clustering_utils.R"
+    statistics: "src/utils/statistics.R"
+
+  labels:
+    pbmc: 
+      CD14+ monocyte: 0
+      Dendritic cell: 1
+      Cytotoxic T cell: 2
+      CD16+ monocyte: 3
+      Plasmacytoid dendritic cell: 4
+      B cell: 5
+      Natural killer cell: 6
+      CD4+ T cell: 7
+      Megakaryocyte: 8
+    breast: 
+      disease: 
+        Normal tissue: 0
+        breast carcinoma: 1
+      group: 
+        Luminal A: 0
+        Normal tissue: 1
+        Luminal B: 2
+        HER +: 3
+        TNBC: 4
+    liver: 

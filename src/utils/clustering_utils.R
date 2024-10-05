@@ -1,5 +1,3 @@
-setwd("E:/Normalization_effects")
-
 # ---- hierarchical clustering ----
 
 optimal_k_hclust <- function(cells){

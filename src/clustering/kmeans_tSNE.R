@@ -1,5 +1,3 @@
-setwd("E:/Normalization_effects")
-
 library(dplyr)
 library(cluster)
 
