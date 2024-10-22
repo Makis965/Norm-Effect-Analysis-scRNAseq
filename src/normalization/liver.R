@@ -42,9 +42,12 @@ cells.dino <- top_variance(expression_df = cells.dino, gene_names = genes)
 cells.scran <- scran_norm(expression_df = cells, metadata = meta)
 cells.scran <- top_variance(expression_df = cells.scran, gene_names = genes)
 
-# 5. seurat  
-cells.seurat <- seurat_norm(expression_df = cells)
-cells.seurat <- top_variance(expression_df = cells.seurat, gene_names = genes)
+# 5. SCtransform  
+cells.sctransform <- sctransform_norm(expression_df = cells)
+gene_names <- rownames(cells.sctransform@assays[["SCT"]]@counts)
+cells.sctransform <- top_variance(
+  expression_df = cells.sctransform@assays$SCT$counts, 
+  gene_names = gene_names)
 
 # 6. SCnorm  
 

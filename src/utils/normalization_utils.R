@@ -77,6 +77,12 @@ scran_norm <- function(expression_df, metadata){
   return(sce@assays@data@listData[["logcounts"]])
 }
 
+sctransform_norm <- function(expression_df){
+  seurat.object <- Seurat::CreateSeuratObject(expression_df)
+  sctransform_norm <- Seurat::SCTransform(seurat.object, vst.flavor="v2")
+  
+  return(sctransform_norm)
+}
 
 seurat_norm <- function(expression_df){
   #' Function proceed Seurat normalization
