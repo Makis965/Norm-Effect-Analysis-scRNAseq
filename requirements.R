@@ -21,8 +21,6 @@ packages <- c(
   
   #normalization packages
   "Seurat",
-  "scran",
-  "SCnorm",
   
   #dim reduction packages
   "Rtsne",
@@ -37,7 +35,12 @@ packages <- c(
   "ggplot2"
 )
 
-packages_bioc <- c("Dino")
+packages_bioc <- c(
+  #normalization packages
+  "Dino",
+  "SCnorm",
+  "scran"
+  )
 
 sapply(packages, install_missing)
 sapply(packages_bioc, install_missing_biocm)
