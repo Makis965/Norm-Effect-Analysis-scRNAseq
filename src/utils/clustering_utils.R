@@ -70,28 +70,28 @@ optimal_k_louvain <- function(cells){
   
   distances <- dist(cells)
   
-  for(k in 1:20){
-    
-    seurat_object <- FindNeighbors(
-      seurat_object, 
-      reduction = "reduction", 
-      k.param = 20, 
-      dims = 2)
-    
-    #TODO: resolution parameters might be verified as well... 
-    #Previously I have been optimizing resolution parameter only (!)
-    seurat_object <- FindClusters(seurat_object, resolution = 0.5)
-    
-    clusters <- as.numeric(seurat_object@meta.data$seurat_clusters)
-    print(clusters)
-    
-    si_val <- silhouette(clusters, distances)
-    
-    si_avg_new <- mean(si_val[, 3])
-    
-    if(si_avg_new > si_avg){
-      si_avg <- si_avg_new
-      best_clusters <- clusters
+  for(k in seq(5, 100, 5)){
+    for(resolution in seq(0.4, 2, 0.1)){
+      
+      seurat_object <- FindNeighbors(
+        seurat_object, 
+        reduction = "reduction", 
+        k.param = k,
+        dims = 1:2)
+      
+      #TODO: resolution parameters might be verified as well... 
+      #Previously I have been optimizing resolution parameter only (!)
+      seurat_object <- FindClusters(seurat_object, resolution = resolution)
+      
+      clusters <- as.numeric(seurat_object@meta.data$seurat_clusters)
+      
+      si_val <- silhouette(clusters, distances)
+      
+      si_avg_new <- mean(si_val[, 3])
+      if(si_avg_new > si_avg){
+        si_avg <- si_avg_new
+        best_clusters <- clusters
+      }
     }
   }
   return(best_clusters)

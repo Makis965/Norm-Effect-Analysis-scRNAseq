@@ -2,6 +2,9 @@ library(Seurat)
 library(SeuratObject)
 library(igraph)
 library(cluster)
+library(config)
+
+config <- config::get()
 
 # ---- UMAP ----
 
@@ -23,7 +26,7 @@ for(set in sets){
   data <- base::get(set)
   
   cells.df <- as.data.frame(data)
-  cells.df$kmeans <- optimal_k_louvain(cells = data)
+  cells.df$louvain <- optimal_k_louvain(cells = data)
   cells.df <- bind_cols(cells.df, meta)
   
   new_var <- paste0(set, ".louvain")
@@ -39,6 +42,8 @@ rm(list = ls())
 
 
 # ---- breast cancer ----
+
+config <- config::get()
 
 source(config$utils$clustering)
 
@@ -56,7 +61,7 @@ for(set in sets){
   data <- base::get(set)
   
   cells.df <- as.data.frame(data)
-  cells.df$kmeans <- optimal_k_louvain(cells = data)
+  cells.df$louvain <- optimal_k_louvain(cells = data)
   cells.df <- bind_cols(cells.df, meta)
   
   new_var <- paste0(set, ".louvain")
@@ -72,6 +77,8 @@ rm(list = ls())
 
 
 # ---- liver ----
+
+config <- config::get()
 
 source(config$utils$clustering)
 
@@ -89,7 +96,7 @@ for(set in sets){
   data <- base::get(set)
   
   cells.df <- as.data.frame(data)
-  cells.df$kmeans <- optimal_k_louvain(cells = data)
+  cells.df$louvain <- optimal_k_louvain(cells = data)
   cells.df <- bind_cols(cells.df, meta)
   
   new_var <- paste0(set, ".louvain")

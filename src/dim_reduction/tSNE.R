@@ -8,7 +8,7 @@ source(config$utils$dim_reduction)
 
 load(config$data$normalized$pbmc)
 
-sets <- setdiff(ls(), "config")
+sets <- ls()[grepl("cells.", ls())]
 
 for(set in sets){
   
@@ -28,7 +28,7 @@ source(config$utils$dim_reduction)
 
 load(config$data$normalized$breast)
 
-sets <- setdiff(ls(), "config")
+sets <- ls()[grepl("cells.", ls())]
 
 for(set in sets){
   
@@ -46,9 +46,9 @@ rm(list = ls())
 config <- config::get()
 source(config$utils$dim_reduction)
 
-load("normalization/normalized_liver.RData")
+load(config$data$normalized$liver)
 
-sets <- setdiff(ls(), "config")
+sets <- ls()[grepl("cells.", ls())]
 
 for(set in sets){
   
@@ -60,3 +60,4 @@ for(set in sets){
 
 save(list=ls()[grepl(".tsne", ls())], file = config$data$reduced$liver$tSNE)
 rm(list = ls())
+

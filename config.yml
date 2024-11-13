@@ -68,31 +68,29 @@ default:
           scCAN: "src/data/clustered/sccan_UMAP_liver.RData"
   
     # Paths to statistics for processed data
-    statistics:
-      dim_reduction: "src/statistics/dim_reduction_efficiency/dim_reduction_stats.RData"
-      clustering:
-        pbmc:
-          tSNE:
-            original_labels: "src/statistics/clustering_efficiency/original_labels/tSNE_pbmc.RData"
-          UMAP:
-            original_labels: "src/statistics/clustering_efficiency/original_labels/UMAP_pbmc.RData"
-        breast:
-          tSNE:
-            original_labels: "src/statistics/clustering_efficiency/original_labels/tSNE_breast.RData"
-          UMAP:
-            original_labels: "src/statistics/clustering_efficiency/original_labels/UMAP_breast.RData"
-        liver:
-          tSNE:
-            original_labels: "src/statistics/clustering_efficiency/original_labels/tSNE_liver.RData"
-          UMAP:
-            original_labels: "src/statistics/clustering_efficiency/original_labels/UMAP_liver.RData"
-
-
+  results:
+    reduction:
+      pbmc: "src/data/statistics/reduction/pbmc_clustering_results.RData"
+      breast: 
+        disease: "src/data/statistics/reduction/breast_dis_clustering_results.RData"
+        group: "src/data/statistics/reduction/breast_group_clustering_results.RData"
+      liver: "src/data/statistics/reduction/liver_clustering_results.RData"
+      
+    clustering:
+      pbmc: "src/data/statistics/clustering/pbmc_clustering_results.RData"
+      breast: 
+        disease: "src/data/statistics/clustering/breast_dis_clustering_results.RData"
+        group: "src/data/statistics/clustering/breast_group_clustering_results.RData"
+      liver: "src/data/statistics/clustering/liver_clustering_results.RData"
+  
   # Utility script paths
   utils:
     normalization: "src/utils/normalization_utils.R"
     dim_reduction: "src/utils/dim_reduction_utils.R"
     clustering: "src/utils/clustering_utils.R"
+    measures: "src/utils/measures.R"
+    data_adjustments: "src/utils/data_adjustments.R"
+    visualization: "src/utils/visualization.R"
     statistics: "src/utils/statistics.R"
 
   labels:
@@ -117,3 +115,16 @@ default:
         HER +: 3
         TNBC: 4
     liver: 
+      hepatocyte: 0
+      macrophage: 1
+      T cell: 2
+      endothelial cell of hepatic sinusoid: 3
+      natural killer cell: 4
+      cycling cell: 5
+      plasma cell: 6
+      B cell: 7
+      cholangiocyte: 8
+      Kupffer cell: 9
+      endothelial cell of vascular tree: 10
+      hematopoietic stem cell: 11
+      mesothelial cell: 12

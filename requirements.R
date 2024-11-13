@@ -16,6 +16,7 @@ options(repos = c(CRAN = "https://cloud.r-project.org"))
 
 packages <- c(
   #base packages
+  "BiocManager",
   "config",
   "dplyr",
   
@@ -28,6 +29,7 @@ packages <- c(
   
   #clustering packages
   "cluster",
+  "dynamicTreeCut",
   "SeuratObject",
   "igraph",
   

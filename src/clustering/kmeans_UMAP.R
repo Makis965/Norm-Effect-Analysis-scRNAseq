@@ -1,5 +1,8 @@
 library(dplyr)
 library(cluster)
+library(config)
+
+config <- config::get()
 
 # ---- UMAP ----
 
@@ -9,7 +12,7 @@ source(config$utils$clustering)
 
 load(config$data$reduced$pbmc$UMAP)
 
-sets <- ls()[grepl("cells", ls())]
+sets <- ls()[grepl("cells.", ls())]
 
 load(config$data$raw_data$pbmc)
 
@@ -38,11 +41,13 @@ rm(list = ls())
 
 # ---- breast cancer ----
 
+config <- config::get()
+
 source(config$utils$clustering)
 
 load(config$data$reduced$breast$UMAP)
 
-sets <- ls()[grepl("cells", ls())]
+sets <- ls()[grepl("cells.", ls())]
 
 load(config$data$raw_data$breast)
 
@@ -71,11 +76,13 @@ rm(list = ls())
 
 # ---- liver ----
 
+config <- config::get()
+
 source(config$utils$clustering)
 
 load(config$data$reduced$liver$UMAP)
 
-sets <- ls()[grepl("cells", ls())]
+sets <- ls()[grepl("cells.", ls())]
 
 load(config$data$raw_data$liver)
 

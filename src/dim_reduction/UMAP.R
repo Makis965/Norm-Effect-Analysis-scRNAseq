@@ -14,7 +14,7 @@ source(config$utils$dim_reduction)
 
 load(config$data$normalized$pbmc)
 
-sets <- setdiff(ls(), omit_vars)
+sets <- ls()[grepl("cells.", ls())]
 
 var2save <- c()
 
@@ -35,17 +35,21 @@ for(set in sets){
   var2save <- c(var2save, new_var)
 }
 
-save(list=ls()[grepl(".UMAP", ls())], file = config$data$reduced$pbmc$tSNE)
+save(list=ls()[grepl(".UMAP", ls())], file = config$data$reduced$pbmc$UMAP)
 rm(list = ls())
 
 # ---- breast cancer ----
+
+n_components <- 2
+pca <- 50
+metric <- "euclidean"
 
 config <- config::get()
 source(config$utils$dim_reduction)
 
 load(config$data$normalized$breast)
 
-sets <- setdiff(ls(), omit_vars)
+sets <- ls()[grepl("cells.", ls())]
 
 var2save <- c()
 
@@ -66,17 +70,21 @@ for(set in sets){
   var2save <- c(var2save, new_var)
 }
 
-save(list=ls()[grepl(".UMAP", ls())], file = config$data$reduced$breast$tSNE)
+save(list=ls()[grepl(".UMAP", ls())], file = config$data$reduced$breast$UMAP)
 rm(list = ls())
 
 # ---- liver ----
+
+n_components <- 2
+pca <- 50
+metric <- "euclidean"
 
 config <- config::get()
 source(config$utils$dim_reduction)
 
 load(config$data$normalized$liver)
 
-sets <- setdiff(ls(), omit_vars)
+sets <- ls()[grepl("cells.", ls())]
 
 var2save <- c()
 
@@ -97,5 +105,6 @@ for(set in sets){
   var2save <- c(var2save, new_var)
 }
 
-save(list=ls()[grepl(".UMAP", ls())], file = config$data$reduced$liver$tSNE)
+save(list=ls()[grepl(".UMAP", ls())], file = config$data$reduced$liver$UMAP)
 rm(list = ls())
+

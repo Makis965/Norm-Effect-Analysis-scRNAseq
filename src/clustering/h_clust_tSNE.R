@@ -12,7 +12,7 @@ source(config$utils$clustering)
 
 load(config$data$reduced$pbmc$tSNE)
 
-sets <- ls()[grepl("cells", ls())]
+sets <- ls()[grepl("cells.", ls())]
 
 load(config$data$raw_data$pbmc)
 
@@ -23,8 +23,8 @@ for(set in sets){
   
   data <- base::get(set)
   
-  cells.df <- as.data.frame(data)
-  cells.df$hclust <- optimal_k_hclust(cells = data)
+  cells.df <- as.data.frame(data$Y)
+  cells.df$hclust <- optimal_k_hclust(cells = data$Y)
   cells.df <- bind_cols(cells.df, meta)
   
   new_var <- paste0(set, ".hclust")
@@ -40,11 +40,13 @@ rm(list = ls())
 
 # ---- breast cancer ----
 
+config <- config::get()
+
 source(config$utils$clustering)
 
 load(config$data$reduced$breast$tSNE)
 
-sets <- ls()[grepl("cells", ls())]
+sets <- ls()[grepl("cells.", ls())]
 
 load(config$data$raw_data$breast)
 
@@ -55,8 +57,8 @@ for(set in sets){
   
   data <- base::get(set)
   
-  cells.df <- as.data.frame(data)
-  cells.df$hclust <- optimal_k_hclust(cells = data)
+  cells.df <- as.data.frame(data$Y)
+  cells.df$hclust <- optimal_k_hclust(cells = data$Y)
   cells.df <- bind_cols(cells.df, meta)
   
   new_var <- paste0(set, ".hclust")
@@ -73,11 +75,13 @@ rm(list = ls())
 
 # ---- liver ----
 
+config <- config::get()
+
 source(config$utils$clustering)
 
 load(config$data$reduced$liver$tSNE)
 
-sets <- ls()[grepl("cells", ls())]
+sets <- ls()[grepl("cells.", ls())]
 
 load(config$data$raw_data$liver)
 
@@ -88,8 +92,8 @@ for(set in sets){
   
   data <- base::get(set)
   
-  cells.df <- as.data.frame(data)
-  cells.df$hclust <- optimal_k_hclust(cells = data)
+  cells.df <- as.data.frame(data$Y)
+  cells.df$hclust <- optimal_k_hclust(cells = data$Y)
   cells.df <- bind_cols(cells.df, meta)
   
   new_var <- paste0(set, ".hclust")
