@@ -82,6 +82,10 @@ default:
         disease: "src/data/statistics/clustering/breast_dis_clustering_results.RData"
         group: "src/data/statistics/clustering/breast_group_clustering_results.RData"
       liver: "src/data/statistics/clustering/liver_clustering_results.RData"
+      
+    statistics:
+      conover: "src/data/statistics/conover.RData"
+        
   
   # Utility script paths
   utils:

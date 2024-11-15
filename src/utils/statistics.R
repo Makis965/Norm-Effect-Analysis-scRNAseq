@@ -68,6 +68,10 @@ conover_test <- function(values, groups, H, method = "bonferroni") {
   res$p.adj <- p.adjust(res$pval, method = method)
   res$rank.cohen.d <- apply(comb, 2, cohen_rank_d, n, r_mean, r_sd)
   
+  t <- t(res)[1, ]
+  
+  res$conover.d <- apply(comb, 2, d_Conover, n, t)
+  
   # MODIFIED COHEN'S D FOR CONOVER'S RANK TESTSING -----------------------------
   return(t(res))
 }
@@ -83,18 +87,19 @@ eta2_KW <- function(H, n, k) {
 }
 
 
-# d_Conover <- function(ns,t) {
-#   # Function to calculate Cohen's d effect size modification for non-parametric Conover post-hoc test, based on the Conover t test statistics.
-#   # current_groups - names of groups compared
-#   # t - data frame with t values from the Conover post-hoc test for a given feature
-#   # group_labels - group labels for each observation
-#   #gr <- unlist(strsplit(current_groups, split = ':', fixed = T))
-#   #t <- t[current_groups]
-#   n1<-ns[,1]
-#   n2<-ns[,2]
-#   # n1 <- length(which(group_labels == gr[1]))
-#   # n2 <- length(which(group_labels == gr[2]))
-#   d <- t * sqrt(1/n1 + 1/n2)
-#   return(as.numeric(d))
-# }
+d_Conover <- function(current_gr, n, t) {
+  # Function to calculate Cohen's d effect size modification for non-parametric Conover post-hoc test, based on the Conover t test statistics.
+  # current_groups - names of groups compared
+  # t - data frame with t values from the Conover post-hoc test for a given feature
+  # group_labels - group labels for each observation
+  #gr <- unlist(strsplit(current_groups, split = ':', fixed = T))
+  #t <- t[current_groups]
+  n1<-n[current_gr][1]
+  n2<-n[current_gr][2]
+  t <- t[paste(as.vector(current_gr), collapse = ":")]
+  # n1 <- length(which(group_labels == gr[1]))
+  # n2 <- length(which(group_labels == gr[2]))
+  d <- t * sqrt(1/n1 + 1/n2)
+  return(as.numeric(abs(d)))
+}
 
