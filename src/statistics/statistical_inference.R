@@ -55,6 +55,20 @@ breast_group_results <- perform_tests(breast_group_disp_vals)
 liver_disp_vals <- adjust_data(liver_disp_vals)
 liver_results <- perform_tests(liver_disp_vals)
 
+save_path <- "src/statistics/"
+
+write.csv(pbmc_results$tsne_conover, paste0(save_path, "pbmc_tsne_conover_results.csv"))
+write.csv(pbmc_results$umap_conover, paste0(save_path, "pbmc_umap_conover_results.csv"))
+
+write.csv(breast_disease_results$tsne_conover, paste0(save_path, "breast_disease_tsne_conover_results.csv"))
+write.csv(breast_disease_results$umap_conover, paste0(save_path, "breast_disease_umap_conover_results.csv"))
+
+write.csv(breast_group_results$tsne_conover, paste0(save_path, "breast_group_tsne_conover_results.csv"))
+write.csv(breast_group_results$umap_conover, paste0(save_path, "breast_group_umap_conover_results.csv"))
+
+write.csv(liver_results$tsne_conover, paste0(save_path, "liver_tsne_conover_results.csv"))
+write.csv(liver_results$umap_conover, paste0(save_path, "liver_umap_conover_results.csv"))
+
 stat_results <- list(
   pbmc = pbmc_results,
   breast.disease = breast_disease_results,

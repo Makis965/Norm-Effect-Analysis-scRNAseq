@@ -40,3 +40,4 @@ cell_label_names = "Cell.type.org"
 liver_clustering_meas <- apply_stat_comp(dataset, cell_labels, cell_label_names)
 
 save(liver_clustering_meas, file = config$results$clustering$liver)
+

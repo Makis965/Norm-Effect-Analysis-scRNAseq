@@ -47,7 +47,7 @@ compute_dispersions <- function(dataset, cell_labels, cell_label_names){
 compute_stats <- function(data_list, dataset, cell_labels, cell_label_names){
   output_df = data.frame()
   
-  mclust_methods = c("adjrand", "f", "mi")
+  mclust_methods = c("adjrand", "sdc", "mi")
   data_names <- names(data_list)
   
   for (i in 1:length(data_list)){

@@ -23,14 +23,16 @@ liver_disp_vals <- adjust_data(liver_disp_vals)
 
 
 # ---- 2-dimensional, dispersion plots ----
+background <- "transparent"
+
 
 theme <- ggplot2::theme(
   panel.grid.major = element_blank(),
   panel.grid.minor = element_blank(),
-  panel.background = element_rect(fill = "white", color = NA),
-  plot.background = element_rect(fill = "white", color = NA),
+  panel.background = element_rect(fill = background, color = NA),
+  plot.background = element_rect(fill = background, color = NA),
   
-  strip.background = element_rect(fill = "white", color = NA),
+  strip.background = element_rect(fill = background, color = NA),
   strip.text = element_text(face = "bold", size = 12),
   
   legend.box = "horizontal",

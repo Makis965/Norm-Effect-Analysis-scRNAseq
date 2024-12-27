@@ -1,6 +1,4 @@
 
-
-
 # ---- 2dims plots ----
 
 plot_point <- function(data, reduction, color=NULL, fill=NULL, x_pos=-35, y_pos=40){
