@@ -4,6 +4,7 @@ library(reshape2)
 library(cluster)
 library(MetBrewer)
 library(patchwork)
+library(ggplot2)
 
 config <- config::get()
 
@@ -102,3 +103,5 @@ p_merged_liver <- (p1 + p2) / (p3 + p4)
 p_merged_liver
 
 # ggsave("clustering_hm_liver.png", p_merged_liver, width = 3.25, height = 4, units = "in", dpi = 300)
+
+# SAVE IN 1000X600 RESOLUTION
