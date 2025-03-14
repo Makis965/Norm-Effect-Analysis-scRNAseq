@@ -61,7 +61,7 @@ ggplot(overall)+
   scale_fill_manual(values = fill_palette)+
   scale_color_manual(values = color_palette)
 
-ggsave("reductions_boxplots.png", reductions, height = heigth, width = width, units = "px")
+# ggsave("reductions_boxplots.png", reductions, height = heigth, width = width, units = "px")
 
 #clusterings
 fill_palette <- rev(MetBrewer::met.brewer("Homer2", type = "continuous", n=3))

@@ -177,10 +177,10 @@ height = 12
 
 units = "cm"
 
-ggsave(
-  filename = "article_plot.png",
-  plot = output_heatmap,
-  width = 8,
-  height = 5,
-  units = "in"
-)
+# ggsave(
+#   filename = "article_plot.png",
+#   plot = output_heatmap,
+#   width = 8,
+#   height = 5,
+#   units = "in"
+# )
