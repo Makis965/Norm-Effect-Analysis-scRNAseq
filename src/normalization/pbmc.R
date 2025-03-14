@@ -1,3 +1,5 @@
+rm(list = ls())
+
 library(config)
 
 config <- config::get()
@@ -24,25 +26,25 @@ med<-median(cells.scaled$sums)
 cells.scaled<-t(t(cells*med)/cells.scaled$sums)
 
 # 1. log2 
-cells.log2<-log2(cells.scaled+1)
+log2.time <- system.time(cells.log2<-log2(cells.scaled+1))[3]
 cells.log2<-top_variance(expression_df = cells.log2, gene_names = genes)
 
 # 2. square root 
-cells.sqrt<-sqrt(cells.scaled)+sqrt(cells.scaled+1)
+ft.time <- system.time(cells.sqrt<-sqrt(cells.scaled)+sqrt(cells.scaled+1))[3]
 cells.sqrt<-top_variance(expression_df = cells.sqrt, gene_names = genes)
 
 # ---- scRNA-seq intendeed normalization ----
 
 # 3. dino 
-cells.dino <- Dino(as.matrix(cells))
+dino.time <- system.time(cells.dino <- Dino(as.matrix(cells), nCores=0))[3]
 cells.dino <- top_variance(expression_df = cells.dino, gene_names = genes)
 
 # 4. scran 
-cells.scran <- scran_norm(expression_df = cells, metadata = meta)
+scran.time <- system.time(cells.scran <- scran_norm(expression_df = cells, metadata = meta))[3]
 cells.scran <- top_variance(expression_df = cells.scran, gene_names = genes)
 
 # 5. SCtransform  
-cells.sctransform <- sctransform_norm(expression_df = cells)
+sctransform.time <- system.time(cells.sctransform <- sctransform_norm(expression_df = cells))[3]
 gene_names <- rownames(cells.sctransform@assays[["SCT"]]@counts)
 cells.sctransform <- top_variance(
   expression_df = cells.sctransform@assays$SCT$counts, 
@@ -59,10 +61,21 @@ cells.sctransform <- top_variance(
 Conditions <- scnorm_conditions(as.matrix(cells))
 
 # cells.scnorm <- SCnorm(cells, Conditions = rep(1, each = ncol(cells)))
-cells.scnorm <- SCnorm(cells, Conditions = Conditions, ditherCounts = TRUE)
+scnorm.time <- system.time(cells.scnorm <- SCnorm(cells, Conditions = Conditions, ditherCounts = TRUE))[3]
 cells.scnorm <- cells.scnorm@assays@data@listData$normcounts
 cells.scnorm <- top_variance(expression_df = cells.scnorm, gene_names = genes)
 
 # save workspace to RData file...
 
-save(list=ls()[grepl("cells.", ls())], file = config$data$normalized$pbmc)
+times <- c(
+  "log2"=log2.time,
+  "ft"=ft.time,
+  "dino"=dino.time,
+  "scran"=scran.time,
+  "sctransform"=sctransform.time,
+  "scnorm"=scnorm.time
+)
+
+write.csv(as.data.frame(times), "pbmc_norm_times.csv")
+
+# save(list=ls()[grepl("cells.", ls())], file = config$data$normalized$pbmc)

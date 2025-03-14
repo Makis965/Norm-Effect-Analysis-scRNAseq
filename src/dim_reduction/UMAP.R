@@ -15,18 +15,24 @@ source(config$utils$dim_reduction)
 load(config$data$normalized$pbmc)
 
 sets <- ls()[grepl("cells.", ls())]
-
+sets <- sets[-4]
+pbmc.times <- c()
 var2save <- c()
 
 for(set in sets){
   
   data <- as.matrix(t(base::get(set)))
   
-  UMAP_results <- uwot::umap(
-    X = data, 
-    n_components = n_components,
-    pca = pca,
-    metric = metric
+  pbmc.times <- c(
+    pbmc.times, 
+    system.time(
+      UMAP_results <- uwot::umap(
+        X = data, 
+        n_components = n_components,
+        pca = pca,
+        metric = metric
+        )
+      )[3]
     )
   
   new_var <- paste0(set,".UMAP")
@@ -35,7 +41,9 @@ for(set in sets){
   var2save <- c(var2save, new_var)
 }
 
-save(list=ls()[grepl(".UMAP", ls())], file = config$data$reduced$pbmc$UMAP)
+pbmc.times <- c(pbmc.times, mean(pbmc.times))
+write.csv(as.data.frame(pbmc.times), "UMAP_pbmc_runtime.csv")
+# save(list=ls()[grepl(".UMAP", ls())], file = config$data$reduced$pbmc$UMAP)
 rm(list = ls())
 
 # ---- breast cancer ----
@@ -50,6 +58,7 @@ source(config$utils$dim_reduction)
 load(config$data$normalized$breast)
 
 sets <- ls()[grepl("cells.", ls())]
+breast.times <- c()
 
 var2save <- c()
 
@@ -57,11 +66,16 @@ for(set in sets){
   
   data <- as.matrix(t(base::get(set)))
   
-  UMAP_results <- uwot::umap(
-    X = data, 
-    n_components = n_components,
-    pca = pca,
-    metric = metric
+  breast.times <- c(
+    breast.times,
+    system.time(
+      UMAP_results <- uwot::umap(
+      X = data, 
+      n_components = n_components,
+      pca = pca,
+      metric = metric
+      )
+    )[3]
   )
   
   new_var <- paste0(set,".UMAP")
@@ -70,7 +84,9 @@ for(set in sets){
   var2save <- c(var2save, new_var)
 }
 
-save(list=ls()[grepl(".UMAP", ls())], file = config$data$reduced$breast$UMAP)
+breast.times <- c(breast.times, mean(breast.times))
+write.csv(as.data.frame(breast.times), "UMAP_breast_runtime.csv")
+# save(list=ls()[grepl(".UMAP", ls())], file = config$data$reduced$breast$UMAP)
 rm(list = ls())
 
 # ---- liver ----
@@ -85,18 +101,24 @@ source(config$utils$dim_reduction)
 load(config$data$normalized$liver)
 
 sets <- ls()[grepl("cells.", ls())]
-
+sets <- sets[-4]
+liver.times <- c()
 var2save <- c()
 
 for(set in sets){
   
   data <- as.matrix(t(base::get(set)))
   
-  UMAP_results <- uwot::umap(
-    X = data, 
-    n_components = n_components,
-    pca = pca,
-    metric = metric
+  liver.times <- c(
+    liver.times,
+    system.time(
+      UMAP_results <- uwot::umap(
+        X = data, 
+        n_components = n_components,
+        pca = pca,
+        metric = metric
+      )
+    )[3]
   )
   
   new_var <- paste0(set,".UMAP")
@@ -105,6 +127,7 @@ for(set in sets){
   var2save <- c(var2save, new_var)
 }
 
-save(list=ls()[grepl(".UMAP", ls())], file = config$data$reduced$liver$UMAP)
-rm(list = ls())
+liver.times <- c(liver.times, mean(liver.times))
+write.csv(as.data.frame(liver.times), "UMAP_liver_runtime.csv")
+# save(list=ls()[grepl(".UMAP", ls())], file = config$data$reduced$liver$UMAP)
 

@@ -9,16 +9,18 @@ source(config$utils$dim_reduction)
 load(config$data$normalized$pbmc)
 
 sets <- ls()[grepl("cells.", ls())]
-
+pbmc.times <- c()
 for(set in sets){
   
-  data <- as.matrix(t(base::get(set)))
+  data <- t(as.matrix(base::get(set)))
   
-  tsne_results <- Rtsne(data)
+  pbmc.times <- c(pbmc.times, system.time(tsne_results <- Rtsne(data))[3])
   assign(paste0(set,'.tsne'), tsne_results)
 }
 
-save(list=ls()[grepl(".tsne", ls())], file = config$data$reduced$pbmc$tSNE)
+pbmc.times <- c(pbmc.times, mean(pbmc.times))
+write.csv(as.data.frame(pbmc.times), "tSNE_pbmc_runtime.csv")
+# save(list=ls()[grepl(".tsne", ls())], file = config$data$reduced$pbmc$tSNE)
 rm(list = ls())
 
 # ---- breast cancer ----
@@ -29,16 +31,18 @@ source(config$utils$dim_reduction)
 load(config$data$normalized$breast)
 
 sets <- ls()[grepl("cells.", ls())]
-
+breast.times <- c()
 for(set in sets){
   
-  data <- as.matrix(t(base::get(set)))
+  data <- t(as.matrix(base::get(set)))
   
-  tsne_results <- Rtsne(data)
+  breast.times <- c(breast.times, system.time(tsne_results <- Rtsne(data))[3])
   assign(paste0(set,'.tsne'), tsne_results)
 }
 
-save(list=ls()[grepl(".tsne", ls())], file = config$data$reduced$breast$tSNE)
+breast.times <- c(breast.times, mean(breast.times))
+write.csv(as.data.frame(breast.times), "tSNE_breast_runtime.csv")
+# save(list=ls()[grepl(".tsne", ls())], file = config$data$reduced$breast$tSNE)
 rm(list = ls())
 
 # ---- liver ----
@@ -49,15 +53,17 @@ source(config$utils$dim_reduction)
 load(config$data$normalized$liver)
 
 sets <- ls()[grepl("cells.", ls())]
-
+liver.times <- c()
 for(set in sets){
   
-  data <- as.matrix(t(base::get(set)))
+  data <- t(as.matrix(base::get(set)))
   
-  tsne_results <- Rtsne(data)
+  liver.times <- c(liver.times, system.time(tsne_results <- Rtsne(data))[3])
   assign(paste0(set,'.tsne'), tsne_results)
 }
 
-save(list=ls()[grepl(".tsne", ls())], file = config$data$reduced$liver$tSNE)
+liver.times <- c(liver.times, mean(liver.times))
+write.csv(as.data.frame(liver.times), "tSNE_liver_runtime.csv")
+# save(list=ls()[grepl(".tsne", ls())], file = config$data$reduced$liver$tSNE)
 rm(list = ls())
 
